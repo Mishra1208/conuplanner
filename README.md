@@ -87,37 +87,37 @@
 ## 🏗️ System Architecture
 
 ```mermaid
-graph TD
-    User([Student Client]) -->|HTTPS| VercelEdge[Vercel Edge Network / CDN]
+flowchart TD
+    User(["Student Client"]) -->|HTTPS| VercelEdge["Vercel Edge Network / CDN"]
     
-    subgraph Frontend_Layer [Frontend Layer - Next.js 16 App Router]
-        VercelEdge --> NextApp[React 19 Server & Client Components]
-        NextApp --> DND[Degree Board - @dnd-kit]
-        NextApp --> Graph[Prereq Graph - ReactFlow]
-        NextApp --> Charts[Analytics - Recharts & Highcharts]
+    subgraph Frontend_Layer ["Frontend Layer (Next.js 16 App Router)"]
+        VercelEdge --> NextApp["React 19 Server & Client Components"]
+        NextApp --> DND["Degree Board (@dnd-kit)"]
+        NextApp --> Graph["Prereq Graph (ReactFlow)"]
+        NextApp --> Charts["Analytics (Recharts & Highcharts)"]
     end
 
-    subgraph Service_API_Layer [Next.js Serverless API Routes]
-        NextApp -->|Auth SDK| Clerk[Clerk Authentication]
-        NextApp --> API_Cron[/api/alerts/cron]
-        NextApp --> API_Scraper[/api/seat-finder]
-        NextApp --> API_Grades[/api/upload-grades]
-        NextApp --> API_AI[/api/smart-chat]
+    subgraph Service_API_Layer ["Serverless API Routes"]
+        NextApp -->|Auth SDK| Clerk["Clerk Authentication"]
+        NextApp --> API_Cron["/api/alerts/cron"]
+        NextApp --> API_Scraper["/api/seat-finder"]
+        NextApp --> API_Grades["/api/upload-grades"]
+        NextApp --> API_AI["/api/smart-chat"]
     end
 
-    subgraph Background_Workers [Automation & Scraping Engine]
-        API_Cron --> HeadlessScraper[Puppeteer / Headless Chromium]
-        HeadlessScraper --> ConcordiaPortal[Concordia Enrollment API]
-        API_Cron --> EmailService[Resend API + React Email]
+    subgraph Background_Workers ["Automation & Scraping Engine"]
+        API_Cron --> HeadlessScraper["Puppeteer / Headless Chromium"]
+        HeadlessScraper --> ConcordiaPortal["Concordia Enrollment Portal"]
+        API_Cron --> EmailService["Resend API + React Email"]
     end
 
-    subgraph Cloud_Persistence [Data Layer]
-        API_Cron <--> Firestore[(Firebase Firestore)]
-        API_Grades <--> GoogleSheets[(Google Sheets DB & Cache)]
-        API_AI <--> GeminiAI[Google Gemini 1.5 Pro]
+    subgraph Cloud_Persistence ["Data Layer"]
+        API_Cron <--> Firestore[("Firebase Firestore")]
+        API_Grades <--> GoogleSheets[("Google Sheets DB & Cache")]
+        API_AI <--> GeminiAI["Google Gemini 1.5 Pro"]
     end
 
-    EmailService -->|Transactional Alerts| Recipient([Student Inbox])
+    EmailService -->|Transactional Alerts| Recipient(["Student Inbox"])
 ```
 
 ---
