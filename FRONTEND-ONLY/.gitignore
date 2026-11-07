@@ -16,3 +16,35 @@ next changes.txt
 /data/conu-planner-*.json
 credentials.json
 *.key.json
+
+# User / Subscriber lists
+*email*.json
+*emails*.json
+*email*.txt
+*emails*.txt
+all_emails.json
+subs email.txt
+subs*.txt
+
+# Archive & Build zips
+*.zip
+*.tar.gz
+
+# Student records / Portal dumps
+*Student Record*
+*PeopleUX*
+*harjinder*
+*mehjabin*
+*narendra*
+*Letter of Admission*
+*Class Schedule Builder*
+*visify*
+
+# Spreadsheets & Financials
+*.xlsx
+*.xls
+
+# Logs & Debug
+*.log
+debug_output*
+*.patch

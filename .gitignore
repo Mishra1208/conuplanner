@@ -1,19 +1,60 @@
-cat > .gitignore <<'EOF'
-# Node
+# Node / Dependencies
 **/node_modules
 **/.pnp
 **/dist
 **/build
 **/.next
-# Env
+**/.vercel
+**/out
+
+# Environment variables & Secrets
 .env
-.env.*.local
+.env*
 **/.env
-**/.env.local
-# Logs
+**/.env*
+ credentials.json
+*.key.json
+/.clerk/
+
+# User & Subscriber lists / PII
+*email*.json
+*emails*.json
+*email*.txt
+*emails*.txt
+all_emails.json
+subs email.txt
+subs*.txt
+
+# Archive & Build zips
+*.zip
+*.tar.gz
+*.tgz
+*.rar
+
+# Student records / Portal dumps
+*Student Record*
+*PeopleUX*
+*harjinder*
+*mehjabin*
+*narendra*
+*Letter of Admission*
+*Class Schedule Builder*
+*visify*
+
+# Spreadsheets & Financials
+*.xlsx
+*.xls
+*.csv.bak
+
+# Logs & Debug
+*.log
 **/npm-debug.log*
 **/yarn-error.log*
-# OS/editor
+debug_output*
+*.patch
+
+# OS / Editor
 .DS_Store
 *.swp
-EOF
+*.swo
+.idea/
